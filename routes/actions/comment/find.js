@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
 	// 如果页码没有传递
 	if (!page || !_.isNumber(page)) page = 1;
 	// 查询用户信息
-	const posts = await pagination(Comment).page(page).size(10).display(5).populate('author', '-password').populate('post', '-content -meta').exec();
+	const posts = await pagination(Comment).page(page).size(5).display(5).populate('author', '-password').populate('post', '-content -meta').exec();
 	// 响应
 	res.send(posts);
 }

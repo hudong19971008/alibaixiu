@@ -10,7 +10,7 @@ const PostSchema = new Schema({
 	// 标题
 	title: {
 		type: String,
-		minlength: 2,
+		minlength: 1,
 		maxlength: 100,
 		required: [true, '请输入文章标题']
 	},
@@ -74,7 +74,7 @@ PostSchema.pre('findOneAndUpdate', function(next) {
 const validatePost = post => {
 	// 定义对象验证规则
 	const schema = {
-		title: Joi.string().min(2).max(100).required().error(new Error('文章标题不符合验证验证规则')),
+		title: Joi.string().min(1).max(100).required().error(new Error('文章标题不符合验证验证规则')),
 		state: Joi.number().valid([0, 1]).default(0, 'draft').error(new Error('文章状态值非法')),
 		thumbnail: Joi.any().empty(),
 		content: Joi.string(),

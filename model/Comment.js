@@ -15,7 +15,7 @@ const CommentSchema = new Schema({
 	// 评论内容
 	content: {
 		type: String,
-		minlength: 4,
+		minlength: 1,
 		required: true
 	},
 	// 评论文章
@@ -38,6 +38,18 @@ const CommentSchema = new Schema({
 }, {versionKey: false});
 // 创建分类集合
 const Comment = mongoose.model('Comment', CommentSchema);
+//*用来插入评论
+// Comment.create({
+//     author:'5de7908c19961fbd050ddd86',
+//     content:'99999123456789',
+//     post:'5de8f61425d38938d6d13153', 
+//     state:0
+    
+//   }).then(()=>{
+//     console.log('评论创建成功')
+//   }).catch(()=>{
+//     console.log('评论创建失败')
+//   })
 
 // 文章分类格式校验（路由级别）
 const validateComment = comment => {
